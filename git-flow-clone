@@ -1,0 +1,36 @@
+#!/bin/sh
+
+
+INSTRUCTIONS="Clone a git repo with support for the gitflow branching model."
+USAGE="usage: git flow clone [options] [--] <repo> [<dir>]"
+INSTALL="Install with:\n  git-flow-clone install"
+
+function fail { echo $USAGE >&2; exit 1; }
+function instruct { echo $INSTRUCTIONS; echo $USAGE; exit 0; }
+
+if [ "git-flow-clone" = `basename "$0"` ]; then
+  if [ "$1" = "install" ]; then
+    gitflow_home=$(dirname $(type git-flow | awk '{ print $NF }'))
+    cp "$0" "$gitflow_home" || sudo cp "$0" "$gitflow_home"
+    echo "git-flow-clone installed"
+    instruct
+  fi
+  echo "$INSTRUCTIONS \n\n$INSTALL" >&2
+  exit 1
+fi
+
+for last_arg; do true; done
+DIR=`echo "$last_arg" | sed -e 's/[^:]*://'`
+
+git clone $@ 2> /dev/null || fail
+cd "$DIR"
+
+non_tracking_branches=`git branch -r | awk '/origin/ { print $NF }' \
+    | grep -v 'origin/master'`
+for branch in $non_tracking_branches; do
+  local_name=`echo "$branch" | sed -e 's/origin\///'`
+  git branch -t "$local_name" "$branch"
+done
+git checkout develop
+
+exit 0

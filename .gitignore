@@ -1,0 +1,5 @@
+# Dev environment
+.sw[nop]
+.*.sw[nop]
+.DS_Store
+
