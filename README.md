@@ -2,7 +2,7 @@
 
 Clone a git repo with support for the gitflow branching model.
 
-    git flow clone <repo> [<dir>]
+    git flow clone [-p] <repo> [<dir>]
 
 Everyone who ever clones a git repo that uses the gitflow model will immediately
 want to:
