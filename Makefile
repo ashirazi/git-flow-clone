@@ -37,7 +37,6 @@ all:
 	@echo "       make uninstall"
 
 install:
-	install -d -m 0755 $(prefix)/bin
 	install -m 0644 $(SCRIPT_FILES) $(prefix)/bin
 
 uninstall:
