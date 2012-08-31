@@ -13,7 +13,7 @@ want to:
 
 Working on a homebrew installation. Otherwise
 
-    $ sudo cp git-flow-clone /usr/local/bin
+    $ make install
 
 ## Example
 
