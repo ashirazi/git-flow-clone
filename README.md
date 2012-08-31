@@ -1,33 +1,35 @@
 # git-flow-clone
 
 Clone a git repo with support for the gitflow branching model.
+
     git flow clone <repo> [<dir>]
 
 Everyone who ever clones a git repo that uses the gitflow model will immediately
 want to:
-* setup a remote tracking 'develop' branch
-* remotely track all other published branches (probably)
-* checkout 'develop'
+* setup a remote tracking "develop" and "master" branches
+* initialize the repository as a Gitflow repo
 
 ## Installation
 
-./git-flow-clone install
+Working on a homebrew installation. Otherwise
+
+    $ sudo cp git-flow-clone /usr/local/bin
 
 ## Example
 
     $ git flow clone git@hostname.example.com:projectname
     Cloning into 'projectname'...
+    ...
     Branch develop set up to track remote branch develop from origin.
-    Branch feature/feat1 set up to track remote branch
-    feature/feat1 from origin.
-    Switched to branch 'develop'
+    Using default branch names.
+    ...
+    Gitflow repo cloned to projectname
 
     $ cd projectname
     $ git branch
     * develop
-      feature/feat1
       master
 
 ## Todo
 
-Handle a Gitflow repo with non-default branch names.
+Let me know how it's working for you.
